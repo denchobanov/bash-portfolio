@@ -9,7 +9,7 @@ MEM=$(free | awk '/Mem:/ {printf("%.0f", $3/$2 * 100)}')
 
 echo "Please enter where do you want the .log file saved:"
 read DEST
-
+mkdir -p "$DEST"
 LOGFILE="$DEST/system-health.log"
 
 echo "===== SYSTEM CHECK =====" | tee -a "$LOGFILE"
