@@ -5,7 +5,7 @@ DISK=${tmpDISK%?}
 
 CPU=$(top -bn1 | awk '/^%Cpu/ {printf("%.0f", 100 - $8)}')
 
-TIME=$(date)
+TIME=$(date +"%Y-%m-%d_%H-%M-%S")
 
 MEM=$(free | awk '/Mem:/ {printf("%.0f", $3/$2 * 100)}')
 
@@ -45,14 +45,16 @@ fi
 
 echo "========================" | tee -a "$LOGFILE"
 
-touch "$LOGFILE"
 echo ".log file saved to $LOGFILE"
 read -p "Would you like to save a backup? y/n: " ANSWER
-if [[ "$ANSWER" != "y"  && "$ANSWER" != "n" ]]
+if [[ "$ANSWER" == "y" ]];
 then 
-    echo "Wrong input! Backup not saved!"
-    exit 1
-else
     cp "$LOGFILE" "$BACKUP"
     echo "Backup created successfully!"
+elif [[ "$ANSWER" == "n" ]];
+then
+    echo "Backup skipped"
+else
+    echo "Wrong input!"
+    exit 2
 fi
