@@ -1,15 +1,22 @@
-# System Health Monitor (Bash)
+# System Health Monitor
 
-A simple Linux system monitoring script that tracks CPU, memory, and disk usage.  
-It logs results with timestamps and generates warnings when system usage exceeds safe thresholds.
+A lightweight, automated Bash script designed to monitor system resource usage (CPU, RAM, Disk) and provide real-time alerts. Ideal for system administrators who need a quick health check or an automated reporting tool for server maintenance.
 
 ## Features
-- Disk usage monitoring
-- Memory usage monitoring
-- Timestamped logging
-- Alert system for high usage
+- **Automated Metrics:** Monitors CPU, RAM, and Disk usage in real-time.
+- **Threshold Alerts:** Issues warnings if any resource usage exceeds the defined 80% threshold.
+- **Non-Interactive:** Designed to run via `cron` jobs without requiring user input.
+- **Logging:** Saves all health reports to a dedicated log file.
+- **Backup:** Automatically creates a timestamped backup of the current health status.
 
-## How to run
+## Usage
+
+### Prerequisites
+- Linux-based system
+- `bash`, `awk`, `top`, `free`, `df`
+
+### Running the script
+You can run the script manually by specifying a destination folder for the logs:
+
 ```bash
-chmod +x system_health.sh
-./system_health.sh
+./system_health.sh /path/to/your/logs
