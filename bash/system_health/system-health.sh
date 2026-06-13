@@ -8,7 +8,7 @@ TIME=$(date +"%Y-%m-%d_%H-%M-%S")
 
 # Set destination path from the first argument.
 # Defaults to './logs' if no argument is provided.
-DEST=${$1:-./logs}
+DEST=${1:-./logs}
 
 
 # --- 2. METRICS COLLECTION ---
