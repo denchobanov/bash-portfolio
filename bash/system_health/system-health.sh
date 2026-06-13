@@ -4,11 +4,11 @@
 
 # Define alert threshold percentage (Default: 80%)
 THRESHOLD=80
-TIME=$(date +"%Y-%m-%d_%H-%M-%S"
+TIME=$(date +"%Y-%m-%d_%H-%M-%S")
 
 # Set destination path from the first argument.
 # Defaults to './logs' if no argument is provided.
-DEST={$1:-./logs}
+DEST=${$1:-./logs}
 
 
 # --- 2. METRICS COLLECTION ---
@@ -62,8 +62,8 @@ if [ "$DISK" -le "$THRESHOLD" ] && [ "$MEM" -le "$THRESHOLD" ] && [ "$CPU" -le "
 fi
 
 echo "========================"
-} | tee "$LOGFILE"
-echo "Check complet! Log saved to: $LOGFILE"
+} | tee -a "$LOGFILE"
+echo "Check complete! Log saved to: $LOGFILE"
 
 
 # --- 5. AUTOMATED BACKUP ---
